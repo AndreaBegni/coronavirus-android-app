@@ -9,6 +9,7 @@ export default class NationalGraphic extends React.Component {
     super();
     this.state = {
       data: [],
+      dataToUse: [],
       screenHeight: Math.round(Dimensions.get("window").height) - 150,
       screenWidth: Math.round(Dimensions.get("window").width),
       domain: {
@@ -23,16 +24,28 @@ export default class NationalGraphic extends React.Component {
     //add the orientation change listener which updates
     //the state's width and height everytime the phone rotates
     ScreenOrientation.addOrientationChangeListener(async () => {
-      //console.log(this.state.data.length);
+      //console.log(this.state.dataToUse.length);
       let width = Math.round(Dimensions.get("window").width);
       let height = Math.round(Dimensions.get("window").height) - 150;
+      let domain = { x: [0, parseInt(width / 49)] };
       //console.log("width", width);
       //console.log("height", height);
       this.setState({
         screenWidth: width,
         screenHeight: height,
-        domain: { x: [0, parseInt(width / 49)] },
+        domain: domain,
+        dataToUse: this.state.data.slice(
+          Math.max(json.length - domain.x[1], 0)
+        ),
       });
+    });
+    const response = await fetch(
+      "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json"
+    );
+    const json = await response.json();
+    //console.log(json);
+    this.setState({
+      data: json,
     });
   }
 
