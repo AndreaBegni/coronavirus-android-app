@@ -18,6 +18,18 @@ export default class NationalGraphic extends React.Component {
     };
   }
 
+  //cut the date to keep it in the MM-DD form
+  //then extract the attribute from the current dataToUse object
+  //using the given dataY string
+  extractYData(dataY) {
+    let dataToReturn = [];
+    this.state.dataToUse.forEach((dataToUse) => {
+      let date = dataToUse.data.substring(5, 10);
+      dataToReturn.push({ x: date, y: dataToUse[dataY] });
+    });
+    return dataToReturn;
+  }
+
   async componentDidMount() {
     //unlock the screen to make it rotatable
     await ScreenOrientation.unlockAsync();
@@ -43,9 +55,9 @@ export default class NationalGraphic extends React.Component {
       "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json"
     );
     const json = await response.json();
-    //console.log(json);
     this.setState({
       data: json,
+      dataToUse: json.slice(Math.max(json.length - this.state.domain.x[1], 0)),
     });
   }
 
@@ -63,33 +75,21 @@ export default class NationalGraphic extends React.Component {
               data: { stroke: "#00FF00" },
               parent: { border: "1px solid #ccc" },
             }}
-            data={[
-              { x: "03-10", y: 2 },
-              { x: "03-11", y: 3 },
-              { x: "03-12", y: 5 },
-              { x: "03-13", y: 4 },
-              { x: "03-14", y: 7 },
-              { x: "03-15", y: 7 },
-              { x: "03-16", y: 7 },
-              { x: "03-17", y: 7 },
-              { x: "03-18", y: 7 },
-              { x: "03-19", y: 7 },
-              { x: "03-20", y: 7 },
-              { x: "03-21", y: 7 },
-            ]}
+            data={this.extractYData("deceduti")}
           />
           <VictoryLine
             style={{
               data: { stroke: "#FF0000" },
               parent: { border: "1px solid #ccc" },
             }}
-            data={[
-              { x: "03-10", y: 5 },
-              { x: "03-11", y: 6 },
-              { x: "03-12", y: 8 },
-              { x: "03-13", y: 2 },
-              { x: "03-14", y: 1 },
-            ]}
+            data={this.extractYData("totale_positivi")}
+          />
+          <VictoryLine
+            style={{
+              data: { stroke: "#0000FF" },
+              parent: { border: "1px solid #ccc" },
+            }}
+            data={this.extractYData("dimessi_guariti")}
           />
         </VictoryChart>
       </View>
