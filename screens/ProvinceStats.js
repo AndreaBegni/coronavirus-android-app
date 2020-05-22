@@ -11,7 +11,7 @@ export default class ProvinceStats extends React.Component {
   }
 
   handleProvinceName = (text) => {
-    this.setState({ provinceName: text });
+    this.setState({ provinceName: text.toLowerCase() });
   };
 
   async componentDidMount() {
