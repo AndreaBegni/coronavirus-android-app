@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { VictoryLine, VictoryChart, VictoryTheme } from "victory-native";
 import { Dimensions } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
@@ -72,26 +72,31 @@ export default class NationalGraphic extends React.Component {
         >
           <VictoryLine
             style={{
-              data: { stroke: "#00FF00" },
+              data: { stroke: "#FF0000" },
               parent: { border: "1px solid #ccc" },
             }}
             data={this.extractYData("deceduti")}
           />
           <VictoryLine
             style={{
-              data: { stroke: "#FF0000" },
+              data: { stroke: "#0000FF" },
               parent: { border: "1px solid #ccc" },
             }}
             data={this.extractYData("totale_positivi")}
           />
           <VictoryLine
             style={{
-              data: { stroke: "#0000FF" },
+              data: { stroke: "#00FF00" },
               parent: { border: "1px solid #ccc" },
             }}
             data={this.extractYData("dimessi_guariti")}
           />
         </VictoryChart>
+        <Text style={{ textAlign: "center" }}>
+          <Text style={{ color: "rgb(0,0,255)" }}> ATTUALMENTE POSITIVI </Text>
+          <Text style={{ color: "rgb(0,255,0)" }}> GUARITI </Text>
+          <Text style={{ color: "rgb(255,0,0)" }}> DECEDUTI </Text>
+        </Text>
       </View>
     );
   }
