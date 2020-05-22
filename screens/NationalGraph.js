@@ -4,7 +4,7 @@ import { VictoryLine, VictoryChart, VictoryTheme } from "victory-native";
 import { Dimensions } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 
-export default class NationalGraphic extends React.Component {
+export default class NationalGraph extends React.Component {
   constructor() {
     super();
     this.state = {

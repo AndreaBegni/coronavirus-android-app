@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
-import NationalGraphic from '../screens/NationalGraphic';
+import NationalGraph from '../screens/NationalGraph';
 import ProvinceStats from '../screens/ProvinceStats';
 
 const BottomTab = createBottomTabNavigator();
@@ -18,7 +18,7 @@ export default function BottomTabNavigator({ navigation, route }) {
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       <BottomTab.Screen
         name="Home"
-        component={NationalGraphic}
+        component={NationalGraph}
         options={{
           title: 'Get Started',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
