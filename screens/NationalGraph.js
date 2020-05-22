@@ -93,9 +93,9 @@ export default class NationalGraph extends React.Component {
           />
         </VictoryChart>
         <Text style={{ textAlign: "center" }}>
-          <Text style={{ color: "rgb(0,0,255)" }}> ATTUALMENTE POSITIVI </Text>
-          <Text style={{ color: "rgb(0,255,0)" }}> GUARITI </Text>
-          <Text style={{ color: "rgb(255,0,0)" }}> DECEDUTI </Text>
+          <Text style={{ color: "rgb(0,0,255)" }}> CURRENTLY POSITIVE </Text>
+          <Text style={{ color: "rgb(0,255,0)" }}> HEALED </Text>
+          <Text style={{ color: "rgb(255,0,0)" }}> DECEASED </Text>
         </Text>
       </View>
     );
