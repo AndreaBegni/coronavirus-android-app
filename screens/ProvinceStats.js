@@ -13,9 +13,15 @@ export default class ProvinceStats extends React.Component {
     this.state = {
       data: [],
       provinceName: "",
-      provinceData: {},
+      provinceData: undefined,
     };
   }
+
+  provinceDataAsString = (attribute) => {
+    if (this.state.provinceData === undefined) return "";
+    console.log("attualmente_positivi", this.state.provinceData[attribute]);
+    return this.state.provinceData[attribute];
+  };
 
   searchProvinceData = () => {
     let specificData = this.state.data.find((province) => {
@@ -61,6 +67,16 @@ export default class ProvinceStats extends React.Component {
         >
           <Text style={styles.submitButtonText}> Search </Text>
         </TouchableOpacity>
+        <Text>
+          REGION: {this.provinceDataAsString("denominazione_regione")}
+        </Text>
+        <Text>
+          PROVINCE: {this.provinceDataAsString("denominazione_provincia")}
+        </Text>
+        <Text>
+          CURRENTLY POSITIVE: {this.provinceDataAsString("totale_casi")}
+        </Text>
+        <Text>NOTES: {this.provinceDataAsString("note_it")}</Text>
       </View>
     );
   }
