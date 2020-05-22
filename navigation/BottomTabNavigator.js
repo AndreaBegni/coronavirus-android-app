@@ -6,7 +6,7 @@ import NationalGraph from '../screens/NationalGraph';
 import ProvinceStats from '../screens/ProvinceStats';
 
 const BottomTab = createBottomTabNavigator();
-const INITIAL_ROUTE_NAME = 'Home';
+const INITIAL_ROUTE_NAME = 'NationalGraph';
 
 export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
@@ -17,18 +17,18 @@ export default function BottomTabNavigator({ navigation, route }) {
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       <BottomTab.Screen
-        name="Home"
+        name="NationalGraph"
         component={NationalGraph}
         options={{
-          title: 'Get Started',
+          title: 'National Graph',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
         }}
       />
       <BottomTab.Screen
-        name="Links"
+        name="ProvinceStats"
         component={ProvinceStats}
         options={{
-          title: 'Resources',
+          title: 'Province Stats',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
         }}
       />
@@ -40,9 +40,9 @@ function getHeaderTitle(route) {
   const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
 
   switch (routeName) {
-    case 'Home':
-      return 'How to get started';
-    case 'Links':
-      return 'Links to learn more';
+    case 'NationalGraph':
+      return 'National statistics about COVID-19';
+    case 'ProvinceStats':
+      return 'Province statistics about COVID-19';
   }
 }
