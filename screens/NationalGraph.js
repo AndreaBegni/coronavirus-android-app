@@ -36,12 +36,9 @@ export default class NationalGraph extends React.Component {
     //add the orientation change listener which updates
     //the state's width and height everytime the phone rotates
     ScreenOrientation.addOrientationChangeListener(async () => {
-      //console.log(this.state.dataToUse.length);
       let width = Math.round(Dimensions.get("window").width);
       let height = Math.round(Dimensions.get("window").height) - 150;
       let domain = { x: [0, parseInt(width / 49)] };
-      //console.log("width", width);
-      //console.log("height", height);
       this.setState({
         screenWidth: width,
         screenHeight: height,

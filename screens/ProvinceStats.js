@@ -19,7 +19,6 @@ export default class ProvinceStats extends React.Component {
 
   provinceDataAsString = (attribute) => {
     if (this.state.provinceData === undefined) return "";
-    console.log("attualmente_positivi", this.state.provinceData[attribute]);
     return this.state.provinceData[attribute];
   };
 
@@ -48,8 +47,6 @@ export default class ProvinceStats extends React.Component {
   }
 
   render() {
-    //console.log("sono provincename", this.state.provinceName);
-    //console.log("sono provincedata", this.state.provinceData);
     return (
       <View style={styles.container}>
         <Text style={styles.topText}>
