@@ -67,16 +67,18 @@ export default class ProvinceStats extends React.Component {
         >
           <Text style={styles.submitButtonText}> Search </Text>
         </TouchableOpacity>
-        <Text>
-          REGION: {this.provinceDataAsString("denominazione_regione")}
-        </Text>
-        <Text>
-          PROVINCE: {this.provinceDataAsString("denominazione_provincia")}
-        </Text>
-        <Text>
-          CURRENTLY POSITIVE: {this.provinceDataAsString("totale_casi")}
-        </Text>
-        <Text>NOTES: {this.provinceDataAsString("note_it")}</Text>
+        <View style={styles.provinceDataContainer}>
+          <Text>
+            REGION: {this.provinceDataAsString("denominazione_regione")}
+          </Text>
+          <Text>
+            PROVINCE: {this.provinceDataAsString("denominazione_provincia")}
+          </Text>
+          <Text>
+            CURRENTLY POSITIVE: {this.provinceDataAsString("totale_casi")}
+          </Text>
+          <Text>NOTES: {this.provinceDataAsString("note_it")}</Text>
+        </View>
       </View>
     );
   }
@@ -85,6 +87,10 @@ export default class ProvinceStats extends React.Component {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 5,
+  },
+  provinceDataContainer: {
+    paddingTop: 20,
+    alignItems: "center",
   },
   topText: {
     textAlign: "center",
