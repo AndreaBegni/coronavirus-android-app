@@ -5,6 +5,7 @@ export default class ProvinceStats extends React.Component {
   constructor() {
     super();
     this.state = {
+      data: [],
       provinceName: "",
     };
   }
@@ -13,7 +14,15 @@ export default class ProvinceStats extends React.Component {
     this.setState({ provinceName: text });
   };
 
-  async componentDidMount() {}
+  async componentDidMount() {
+    const response = await fetch(
+      "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province-latest.json"
+    );
+    const json = await response.json();
+    this.setState({
+      data: json,
+    });
+  }
 
   render() {
     console.log("sono provincename", this.state.provinceName);
