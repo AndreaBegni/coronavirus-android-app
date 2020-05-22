@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 export default class ProvinceStats extends React.Component {
   constructor() {
@@ -7,8 +13,19 @@ export default class ProvinceStats extends React.Component {
     this.state = {
       data: [],
       provinceName: "",
+      provinceData: {},
     };
   }
+
+  searchProvinceData = () => {
+    let specificData = this.state.data.find((province) => {
+      let currentProvinceName = province.denominazione_provincia.toLowerCase();
+      return currentProvinceName == this.state.provinceName;
+    });
+    this.setState({
+      provinceData: specificData,
+    });
+  };
 
   handleProvinceName = (text) => {
     this.setState({ provinceName: text.toLowerCase() });
@@ -25,7 +42,8 @@ export default class ProvinceStats extends React.Component {
   }
 
   render() {
-    console.log("sono provincename", this.state.provinceName);
+    //console.log("sono provincename", this.state.provinceName);
+    //console.log("sono provincedata", this.state.provinceData);
     return (
       <View style={styles.container}>
         <Text style={styles.topText}>
@@ -37,6 +55,12 @@ export default class ProvinceStats extends React.Component {
           placeholder="Province name"
           onChangeText={this.handleProvinceName}
         />
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={() => this.searchProvinceData()}
+        >
+          <Text style={styles.submitButtonText}> Search </Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -56,5 +80,15 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     fontWeight: "bold",
     padding: 4,
+  },
+  submitButton: {
+    backgroundColor: "#7a42f4",
+    padding: 10,
+    height: 40,
+    alignSelf: "center",
+  },
+  submitButtonText: {
+    color: "white",
+    textAlign: "center",
   },
 });
