@@ -47,7 +47,7 @@ export default class NationalGraph extends React.Component {
         screenHeight: height,
         domain: domain,
         dataToUse: this.state.data.slice(
-          Math.max(json.length - domain.x[1], 0)
+          Math.max(this.state.data.length - domain.x[1], 0)
         ),
       });
     });
