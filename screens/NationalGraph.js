@@ -1,6 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { VictoryLine, VictoryChart, VictoryTheme } from "victory-native";
+import {
+  VictoryLine,
+  VictoryChart,
+  VictoryTheme,
+  VictoryAxis,
+} from "victory-native";
 import { Dimensions } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 
@@ -67,6 +72,8 @@ export default class NationalGraph extends React.Component {
           width={this.state.screenWidth}
           domain={this.state.domain}
         >
+          <VictoryAxis dependentAxis style={{ tickLabels: { angle: -60 } }} />
+          <VictoryAxis />
           <VictoryLine
             style={{
               data: { stroke: "#FF0000" },
