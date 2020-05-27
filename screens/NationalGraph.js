@@ -98,9 +98,3 @@ export default class NationalGraph extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  deceasedLine: {
-    paddingTop: 5,
-  },
-});
