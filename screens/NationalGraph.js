@@ -66,6 +66,11 @@ export default class NationalGraph extends React.Component {
   render() {
     return (
       <View style={{ alignItems: "center" }}>
+        <Text>
+          <Text style={{ color: "rgb(0,0,255)" }}> CURRENTLY POSITIVE </Text>
+          <Text style={{ color: "rgb(0,255,0)" }}> HEALED </Text>
+          <Text style={{ color: "rgb(255,0,0)" }}> DECEASED </Text>
+        </Text>
         <VictoryChart
           theme={VictoryTheme.material}
           height={this.state.screenHeight}
@@ -96,11 +101,6 @@ export default class NationalGraph extends React.Component {
             data={this.extractYData("dimessi_guariti")}
           />
         </VictoryChart>
-        <Text>
-          <Text style={{ color: "rgb(0,0,255)" }}> CURRENTLY POSITIVE </Text>
-          <Text style={{ color: "rgb(0,255,0)" }}> HEALED </Text>
-          <Text style={{ color: "rgb(255,0,0)" }}> DECEASED </Text>
-        </Text>
       </View>
     );
   }
