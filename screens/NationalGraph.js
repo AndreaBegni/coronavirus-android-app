@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { VictoryLine, VictoryChart, VictoryTheme } from "victory-native";
 import { Dimensions } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
@@ -60,7 +60,7 @@ export default class NationalGraph extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={{ alignItems: "center" }}>
         <VictoryChart
           theme={VictoryTheme.material}
           height={this.state.screenHeight}
@@ -89,7 +89,7 @@ export default class NationalGraph extends React.Component {
             data={this.extractYData("dimessi_guariti")}
           />
         </VictoryChart>
-        <Text style={{ textAlign: "center" }}>
+        <Text>
           <Text style={{ color: "rgb(0,0,255)" }}> CURRENTLY POSITIVE </Text>
           <Text style={{ color: "rgb(0,255,0)" }}> HEALED </Text>
           <Text style={{ color: "rgb(255,0,0)" }}> DECEASED </Text>
@@ -98,3 +98,9 @@ export default class NationalGraph extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  deceasedLine: {
+    paddingTop: 5,
+  },
+});
