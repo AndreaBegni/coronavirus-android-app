@@ -77,8 +77,20 @@ export default class NationalGraph extends React.Component {
           width={this.state.screenWidth}
           domain={this.state.domain}
         >
-          <VictoryAxis dependentAxis style={{ tickLabels: { angle: -60 } }} />
-          <VictoryAxis />
+          <VictoryAxis
+            dependentAxis
+            style={{
+              axis: { stroke: "#756f6a" },
+              grid: { stroke: "grey" },
+              tickLabels: { angle: -60 },
+            }}
+          />
+          <VictoryAxis
+            style={{
+              axis: { stroke: "#756f6a" },
+              grid: { stroke: "grey" },
+            }}
+          />
           <VictoryLine
             style={{
               data: { stroke: "#FF0000" },
