@@ -68,7 +68,6 @@ export default class ProvinceStats extends React.Component {
   }
 
   render() {
-    console.log("sono index", this.state.dataIndex);
     return (
       <View style={styles.container}>
         <Text style={styles.topText}>
