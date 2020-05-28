@@ -28,6 +28,7 @@ export default class ProvinceStats extends React.Component {
       let currentProvinceName = province.denominazione_provincia.toLowerCase();
       return currentProvinceName == this.state.provinceName;
     });
+    if (specificData.length === 0) return;
     this.setState({
       provinceData: specificData,
       dataIndex: specificData.length - 1,
