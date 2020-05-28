@@ -13,22 +13,24 @@ export default class ProvinceStats extends React.Component {
     this.state = {
       data: [],
       provinceName: "",
-      provinceData: undefined,
+      provinceData: [],
+      dataIndex: undefined,
     };
   }
 
   provinceDataAsString = (attribute) => {
-    if (this.state.provinceData === undefined) return "";
-    return this.state.provinceData[attribute];
+    if (this.state.provinceData.length === 0) return "";
+    return this.state.provinceData[this.state.dataIndex][attribute];
   };
 
   searchProvinceData = () => {
-    let specificData = this.state.data.find((province) => {
+    let specificData = this.state.data.filter((province) => {
       let currentProvinceName = province.denominazione_provincia.toLowerCase();
       return currentProvinceName == this.state.provinceName;
     });
     this.setState({
       provinceData: specificData,
+      dataIndex: specificData.length - 1,
     });
   };
 
@@ -38,7 +40,7 @@ export default class ProvinceStats extends React.Component {
 
   async componentDidMount() {
     const response = await fetch(
-      "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province-latest.json"
+      "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province.json"
     );
     const json = await response.json();
     this.setState({
