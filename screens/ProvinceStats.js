@@ -18,6 +18,24 @@ export default class ProvinceStats extends React.Component {
     };
   }
 
+  moveIndexToLeft = () => {
+    let currentIndex = this.state.dataIndex;
+    if (currentIndex === undefined) return;
+    if (currentIndex === 0) return;
+    this.setState({
+      dataIndex: currentIndex - 1,
+    });
+  };
+
+  moveIndexToRight = () => {
+    let currentIndex = this.state.dataIndex;
+    if (currentIndex === undefined) return;
+    if (currentIndex === this.state.provinceData.length - 1) return;
+    this.setState({
+      dataIndex: currentIndex + 1,
+    });
+  };
+
   provinceDataAsString = (attribute) => {
     if (this.state.provinceData.length === 0) return "";
     return this.state.provinceData[this.state.dataIndex][attribute];
@@ -50,6 +68,7 @@ export default class ProvinceStats extends React.Component {
   }
 
   render() {
+    console.log("sono index", this.state.dataIndex);
     return (
       <View style={styles.container}>
         <Text style={styles.topText}>
@@ -67,6 +86,17 @@ export default class ProvinceStats extends React.Component {
         >
           <Text style={styles.submitButtonText}> Search </Text>
         </TouchableOpacity>
+        <View style={styles.content}>
+          <TouchableOpacity onPress={() => this.moveIndexToLeft()}>
+            <View style={styles.triangleLeft}></View>
+          </TouchableOpacity>
+          <Text>
+            DATE: {this.provinceDataAsString("data").substring(0, 10)}
+          </Text>
+          <TouchableOpacity onPress={() => this.moveIndexToRight()}>
+            <View style={styles.triangleRight}></View>
+          </TouchableOpacity>
+        </View>
         <View style={styles.provinceDataContainer}>
           <Text>
             REGION: {this.provinceDataAsString("denominazione_regione")}
@@ -89,7 +119,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   provinceDataContainer: {
-    paddingTop: 20,
+    paddingTop: 10,
     alignItems: "center",
   },
   topText: {
@@ -112,5 +142,33 @@ const styles = StyleSheet.create({
   submitButtonText: {
     color: "white",
     textAlign: "center",
+  },
+  content: {
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
+    paddingTop: 10,
+  },
+  triangleLeft: {
+    backgroundColor: "transparent",
+    borderStyle: "solid",
+    borderLeftWidth: 15,
+    borderRightWidth: 15,
+    borderBottomWidth: 30,
+    borderLeftColor: "transparent",
+    borderRightColor: "transparent",
+    borderBottomColor: "#7a42f4",
+    transform: [{ rotate: "-90deg" }],
+  },
+  triangleRight: {
+    backgroundColor: "transparent",
+    borderStyle: "solid",
+    borderLeftWidth: 15,
+    borderRightWidth: 15,
+    borderBottomWidth: 30,
+    borderLeftColor: "transparent",
+    borderRightColor: "transparent",
+    borderBottomColor: "#7a42f4",
+    transform: [{ rotate: "90deg" }],
   },
 });
