@@ -23,6 +23,11 @@ export default class NationalGraph extends React.Component {
     };
   }
 
+  extractTodayDataAsString = (attribute) => {
+    if (this.state.data.length === 0) return "";
+    return this.state.data[this.state.data.length - 1][attribute].toString();
+  };
+
   //cut the date to keep it in the MM-DD form
   //then extract the attribute from the current dataToUse object
   //using the given dataY string
@@ -65,12 +70,21 @@ export default class NationalGraph extends React.Component {
 
   render() {
     return (
-      <View style={{ alignItems: "center" }}>
-        <Text>
-          <Text style={{ color: "rgb(0,0,255)" }}> CURRENTLY POSITIVE </Text>
-          <Text style={{ color: "rgb(0,255,0)" }}> HEALED </Text>
-          <Text style={{ color: "rgb(255,0,0)" }}> DECEASED </Text>
-        </Text>
+      <View>
+        <View style={styles.content}>
+          <Text style={{ color: "rgb(0,0,255)", textAlign: "center" }}>
+            CURRENTLY POSITIVE
+            {"\n" + this.extractTodayDataAsString("totale_positivi")}
+          </Text>
+          <Text style={{ color: "rgb(0,255,0)", textAlign: "center" }}>
+            HEALED
+            {" \n" + this.extractTodayDataAsString("dimessi_guariti")}
+          </Text>
+          <Text style={{ color: "rgb(255,0,0)", textAlign: "center" }}>
+            DECEASED
+            {" \n" + this.extractTodayDataAsString("deceduti")}
+          </Text>
+        </View>
         <VictoryChart
           theme={VictoryTheme.material}
           height={this.state.screenHeight}
@@ -117,3 +131,10 @@ export default class NationalGraph extends React.Component {
     );
   }
 }
+const styles = StyleSheet.create({
+  content: {
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+  },
+});
