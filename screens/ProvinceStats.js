@@ -18,6 +18,16 @@ export default class ProvinceStats extends React.Component {
     };
   }
 
+  newPositive = () => {
+    let currentIndex = this.state.dataIndex;
+    if (currentIndex === undefined) return;
+    if (currentIndex === 0) return "?";
+    return (
+      this.state.provinceData[currentIndex].totale_casi -
+      this.state.provinceData[currentIndex - 1].totale_casi
+    );
+  };
+
   moveIndexToLeft = () => {
     let currentIndex = this.state.dataIndex;
     if (currentIndex === undefined) return;
@@ -106,6 +116,7 @@ export default class ProvinceStats extends React.Component {
           <Text>
             CURRENTLY POSITIVE: {this.provinceDataAsString("totale_casi")}
           </Text>
+          <Text>NEW POSITIVE: {this.newPositive()}</Text>
           <Text>NOTES: {this.provinceDataAsString("note_it")}</Text>
         </View>
       </View>
