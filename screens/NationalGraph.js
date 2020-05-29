@@ -73,7 +73,7 @@ export default class NationalGraph extends React.Component {
       <View>
         <View style={styles.content}>
           <Text style={{ color: "rgb(0,0,255)", textAlign: "center" }}>
-            CURRENTLY POSITIVE
+            CURRENTLY POSITIVES
             {"\n" + this.extractTodayData("totale_positivi")}
           </Text>
           <Text style={{ color: "rgb(0,255,0)", textAlign: "center" }}>
@@ -81,7 +81,7 @@ export default class NationalGraph extends React.Component {
             {" \n" + this.extractTodayData("dimessi_guariti")}
           </Text>
           <Text style={{ color: "rgb(255,0,0)", textAlign: "center" }}>
-            DECEASED
+            DECEASEDS
             {" \n" + this.extractTodayData("deceduti")}
           </Text>
         </View>
