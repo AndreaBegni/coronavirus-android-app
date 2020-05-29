@@ -23,9 +23,9 @@ export default class NationalGraph extends React.Component {
     };
   }
 
-  extractTodayDataAsString = (attribute) => {
+  extractTodayData = (attribute) => {
     if (this.state.data.length === 0) return "";
-    return this.state.data[this.state.data.length - 1][attribute].toString();
+    return this.state.data[this.state.data.length - 1][attribute];
   };
 
   //cut the date to keep it in the MM-DD form
@@ -74,15 +74,15 @@ export default class NationalGraph extends React.Component {
         <View style={styles.content}>
           <Text style={{ color: "rgb(0,0,255)", textAlign: "center" }}>
             CURRENTLY POSITIVE
-            {"\n" + this.extractTodayDataAsString("totale_positivi")}
+            {"\n" + this.extractTodayData("totale_positivi")}
           </Text>
           <Text style={{ color: "rgb(0,255,0)", textAlign: "center" }}>
             HEALED
-            {" \n" + this.extractTodayDataAsString("dimessi_guariti")}
+            {" \n" + this.extractTodayData("dimessi_guariti")}
           </Text>
           <Text style={{ color: "rgb(255,0,0)", textAlign: "center" }}>
             DECEASED
-            {" \n" + this.extractTodayDataAsString("deceduti")}
+            {" \n" + this.extractTodayData("deceduti")}
           </Text>
         </View>
         <VictoryChart
