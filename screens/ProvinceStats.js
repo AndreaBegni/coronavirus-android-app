@@ -95,7 +95,7 @@ export default class ProvinceStats extends React.Component {
         >
           <Text style={styles.submitButtonText}> Search </Text>
         </TouchableOpacity>
-        <View style={styles.content}>
+        <View style={styles.dateRow}>
           <TouchableOpacity onPress={() => this.moveIndexToLeft()}>
             <View style={styles.triangleLeft}></View>
           </TouchableOpacity>
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   },
   input: {
     margin: 10,
-    height: 40,
+    height: "10%",
     borderColor: "#000000",
     borderWidth: 2,
     fontWeight: "bold",
@@ -145,15 +145,15 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     backgroundColor: "#7a42f4",
-    padding: 10,
-    height: 40,
+    padding: 8,
+    height: 32,
     alignSelf: "center",
   },
   submitButtonText: {
     color: "white",
     textAlign: "center",
   },
-  content: {
+  dateRow: {
     alignItems: "center",
     justifyContent: "space-between",
     flexDirection: "row",
